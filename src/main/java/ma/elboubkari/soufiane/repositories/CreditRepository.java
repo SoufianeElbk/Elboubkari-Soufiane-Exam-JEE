@@ -1,0 +1,28 @@
+package ma.elboubkari.soufiane.repositories;
+
+import ma.elboubkari.soufiane.entities.Credit;
+import ma.elboubkari.soufiane.enums.StatutCredit;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.Date;
+import java.util.List;
+
+public interface CreditRepository extends JpaRepository<Credit, Long> {
+    // Recherche par statut
+    List<Credit> findByStatut(StatutCredit statut);
+
+    // Recherche par client
+    List<Credit> findByClientId(Long clientId);
+
+    // Recherche par montant supérieur à une valeur
+    List<Credit> findByMontantGreaterThan(Double montant);
+
+    // Recherche des crédits entre deux dates
+    List<Credit> findByDateDemandeIsBetween(Date dateDebut, Date dateFin);
+
+    // Recherche des crédits par type spécifique
+    @Query("SELECT c FROM Credit c WHERE TYPE(c) = :type")
+    List<Credit> findByType(@Param("type") Class<?> type);
+}
