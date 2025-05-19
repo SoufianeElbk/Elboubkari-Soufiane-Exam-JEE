@@ -5,10 +5,12 @@ import ma.elboubkari.soufiane.dtos.CreditImmobilierDTO;
 import ma.elboubkari.soufiane.dtos.CreditPersonnelDTO;
 import ma.elboubkari.soufiane.dtos.CreditProfessionnelDTO;
 import ma.elboubkari.soufiane.enums.StatutCredit;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
+@Service
 public interface CreditService {
     // CRUD opérations génériques
     CreditDTO getCreditById(Long id);

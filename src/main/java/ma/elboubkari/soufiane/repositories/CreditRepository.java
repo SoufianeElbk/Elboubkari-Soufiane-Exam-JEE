@@ -12,12 +12,15 @@ import java.util.List;
 public interface CreditRepository extends JpaRepository<Credit, Long> {
     List<Credit> findByStatut(StatutCredit statut);
 
+    @Query("SELECT c FROM Credit c WHERE TYPE(c) = :type")
+    <T extends Credit> List<T> findByType(@Param("type") Class<T> type);
+
     List<Credit> findByClientId(Long clientId);
 
     List<Credit> findByMontantGreaterThan(Double montant);
 
     List<Credit> findByDateDemandeIsBetween(Date dateDebut, Date dateFin);
 
-    @Query("SELECT c FROM Credit c WHERE TYPE(c) = :type")
-    List<Credit> findByType(@Param("type") Class<?> type);
+//    @Query("SELECT c FROM Credit c WHERE TYPE(c) = :type")
+//    List<Credit> findByType(@Param("type") Class<?> type);
 }

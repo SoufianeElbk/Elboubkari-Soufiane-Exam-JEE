@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface CreditImmobilierRepository extends JpaRepository<CreditImmobilier, Long> {
     List<CreditImmobilier> findByTypeBien(TypeBien typeBien);
+    List<CreditImmobilier> findByTypeBienEquals(TypeBien typeBien);
 }
