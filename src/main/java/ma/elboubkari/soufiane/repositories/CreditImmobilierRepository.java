@@ -7,6 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface CreditImmobilierRepository extends JpaRepository<CreditImmobilier, Long> {
-    // Recherche par type de bien
     List<CreditImmobilier> findByTypeBien(TypeBien typeBien);
 }
