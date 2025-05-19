@@ -15,4 +15,8 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 
     @Query("SELECT DISTINCT c FROM Client c JOIN c.credits")
     List<Client> findClientsWithCredits();
+
+    List<Client> findByNameContainsIgnoreCase(String name);
+
+    List<Client> findByCreditsIsNotEmpty();
 }
